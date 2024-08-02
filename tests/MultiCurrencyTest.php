@@ -13,4 +13,10 @@ class MultiCurrencyTest extends \PHPUnit\Framework\TestCase
         $product = $five->times(3);
         $this->assertEquals(15, $product->amount);
     }
+
+    public function testEquality()
+    {
+        $this->assertTrue((new GBP(5))->equals(new GBP(5)));
+        $this->assertFalse((new GBP(5))->equals(new GBP(6)));
+    }
 }

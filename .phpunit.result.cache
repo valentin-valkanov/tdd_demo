@@ -1,1 +1,1 @@
-{"version":1,"defects":{"MultiCurrencyTest::testMultiplication":7},"times":{"MultiCurrencyTest::testMultiplication":0.006}}
+{"version":1,"defects":{"MultiCurrencyTest::testMultiplication":7,"MultiCurrencyTest::testEquality":7},"times":{"MultiCurrencyTest::testMultiplication":0.005,"MultiCurrencyTest::testEquality":0.001}}

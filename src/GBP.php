@@ -14,4 +14,9 @@ class GBP
     {
         return new GBP($this->amount * $multiplier);
     }
+
+    public function equals(GBP $gbp): bool
+    {
+        return $this->amount === $gbp->amount;
+    }
 }

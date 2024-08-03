@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App;
 
-abstract class Money
+class Money
 {
     public function __construct(float $amount, string $currency)
     {
@@ -12,7 +12,10 @@ abstract class Money
     }
     protected string $currency;
     protected ?float $amount = null;
-    abstract public function times(int $multiplier): Money;
+    public function times(int $multiplier)
+    {
+        return new Money($this->amount * $multiplier, $this->currency);
+    }
     public function currency(): string
     {
         return $this->currency;
@@ -20,17 +23,17 @@ abstract class Money
 
     public function equals(Money $money): bool
     {
-        return get_class($this) === get_class($money)
+        return $this->currency === $money->currency
             && $this->amount === $money->amount;
     }
 
     public static function gbp(float $amount): Money
     {
-        return new GBP($amount, 'GBP');
+        return new Money($amount, 'GBP');
     }
 
     public static function usd(float $amount): Money
     {
-        return new USD($amount, 'USD');
+        return new Money($amount, 'USD');
     }
 }

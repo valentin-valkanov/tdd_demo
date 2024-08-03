@@ -4,8 +4,8 @@ namespace App;
 class USD extends Money
 {
 
-    public function times(int $multiplier): Money
-    {
-        return Money::usd($this->amount * $multiplier);
-    }
+//    public function times(int $multiplier): Money
+//    {
+//        return new Money($this->amount * $multiplier, $this->currency);
+//    }
 }

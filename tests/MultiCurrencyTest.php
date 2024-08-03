@@ -27,8 +27,14 @@ class MultiCurrencyTest extends TestCase
 
     public function testUSDMultiplication(): void
     {
-        $five = new USD(5);
-        $this->assertEquals(new USD(10), $five->times(2));
-        $this->assertEquals(new USD(15), $five->times(3));
+        $five = Money::usd(5);
+        $this->assertEquals(Money::usd(10), $five->times(2));
+        $this->assertEquals(Money::usd(15), $five->times(3));
+    }
+
+    public function testCurrency(): void
+    {
+        $this->assertEquals('GBP', Money::gbp(1)->currency());
+        $this->assertEquals('USD', Money::usd(1)->currency());
     }
 }

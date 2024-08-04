@@ -3,15 +3,19 @@ declare(strict_types=1);
 
 namespace App;
 
-class Money
+class Money implements Expression
 {
+    protected string $currency;
+    protected ?float $amount = null;
     public function __construct(float $amount, string $currency)
     {
         $this->amount = $amount;
         $this->currency = $currency;
     }
-    protected string $currency;
-    protected ?float $amount = null;
+    public function plus(Money $addend): Expression
+    {
+        return new Money($this->amount + $addend->amount, $this->currency);
+    }
     public function times(int $multiplier)
     {
         return new Money($this->amount * $multiplier, $this->currency);

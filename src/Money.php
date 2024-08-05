@@ -6,7 +6,7 @@ namespace App;
 class Money implements Expression
 {
     protected string $currency;
-    protected ?float $amount = null;
+    public ?float $amount = null;
     public function __construct(float $amount, string $currency)
     {
         $this->amount = $amount;
@@ -40,5 +40,10 @@ class Money implements Expression
     public static function usd(float $amount): Money
     {
         return new Money($amount, 'USD');
+    }
+
+    public function reduce(string $to): Money
+    {
+        return $this;
     }
 }

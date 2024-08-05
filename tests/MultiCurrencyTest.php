@@ -45,6 +45,20 @@ class MultiCurrencyTest extends TestCase
         $this->assertInstanceOf(Sum::class, $sum);
         $this->assertEquals($five, $sum->augend);
         $this->assertEquals($five, $sum->addend);
+    }
 
+    public function testBankCanReduceSum()
+    {
+        $sum = new Sum(Money::gbp(3), Money::gbp(4));
+        $bank = new Bank();
+        $result = $bank->reduce($sum, 'GBP');
+        $this->assertEquals(Money::gbp(7), $result);
+    }
+
+    public function testReduceMoney(): void
+    {
+        $bank = new Bank();
+        $result = $bank->reduce(Money::gbp(1), 'GBP');
+        $this->assertEquals(Money::gbp(1), $result);
     }
 }

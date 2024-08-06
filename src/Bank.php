@@ -4,10 +4,7 @@ namespace App;
 
 class Bank
 {
-    private array $rates = [
-//        'USDGBP' => 2,
-//        'GBPGBP' => 1
-    ];
+    private array $rates = [];
     public function reduce(Expression $source, string $targetCurrency): Money
     {
         return $source->reduce($this, $targetCurrency);

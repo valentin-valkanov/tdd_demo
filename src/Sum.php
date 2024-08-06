@@ -9,7 +9,7 @@ class Sum implements Expression
     {
     }
 
-    public function reduce($to): Money
+    public function reduce(Bank $bank, $to): Money
     {
         $amount = $this->augend->amount + $this->addend->amount;
 

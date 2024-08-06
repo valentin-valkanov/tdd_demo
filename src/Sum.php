@@ -5,7 +5,7 @@ namespace App;
 
 class Sum implements Expression
 {
-    public function __construct(public Money $augend, public Money $addend)
+    public function __construct(public Expression $augend, public Expression $addend)
     {
     }
 
@@ -14,6 +14,11 @@ class Sum implements Expression
         $amount = $this->augend->reduce($bank, $to)->amount + $this->addend->reduce($bank, $to)->amount;
 
         return new Money($amount, $to);
+    }
+
+    public function plus(Expression $addend): Expression
+    {
+        return new Sum($this, $addend);
     }
 
 }
